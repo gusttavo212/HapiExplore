@@ -1,5 +1,8 @@
 const Hapi = require('hapi');
 
+const MongoDb = require('./src/db/mongodb/mongoConnect')
+const PessoaSchema = require('./src/db/mongodb/schema/pessoaSchema')
+
 //Create server
 const app = new Hapi.Server(
     {
@@ -16,14 +19,22 @@ const app = new Hapi.Server(
 );
 
 
-async function main() {
+async function startServer() {
+    //Abir o Servidor
     try {
         await app.start();
         console.log('Servidor rodando na porta', app.info.port);
+    
+        return app;
     } catch (error) {
         throw console.log('Error ao iniciar o server',error)
     }
+
+    //Conectar ao MONGODB
+    const connection = MongoDb.connect();
+    const MongoConect = new MongoDb(connection, PessoaSchema)
+    
     
 };
 
-main();
+module.exports = startServer();
