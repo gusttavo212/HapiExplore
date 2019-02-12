@@ -28,7 +28,7 @@ describe('Suite de testes Servidor', function () {
         const connection = MongoDb.connect();
         MongoConect = new MongoDb(connection, PessoaSchema)
 
-        const result = await MongoDb.create(MOCK_PESSOA_DEFAULT);
+        const result = await MongoConect.create(MOCK_PESSOA_DEFAULT);
         MOCK_PESSOA_DEFAULT_ID = result._id;
     });
     it('Verificar conexão', async () => {
@@ -43,7 +43,7 @@ describe('Suite de testes Servidor', function () {
         assert.deepEqual({name, sex, empresa, age}, MOCK_PESSOA_CADASTRAR)
     });
     it('Listar/READ', async ()=> {
-        const [{name, sex, empresa, age}] = await MongoConect.read({ nome: MOCK_PESSOA_CADASTRAR.name})
+        const [{name, sex, empresa, age}] = await MongoConect.read({ name: MOCK_PESSOA_DEFAULT.name})
         const result = {
             name,
             sex,

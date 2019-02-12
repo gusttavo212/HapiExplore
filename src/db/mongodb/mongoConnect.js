@@ -44,6 +44,11 @@ class MongoDB{
         create(item) {
             return this._schema.create(item);    
           };
+
+        //READ
+        read(query) {
+            return this._schema.find(query);
+        }
 };
 
 module.exports = MongoDB;
