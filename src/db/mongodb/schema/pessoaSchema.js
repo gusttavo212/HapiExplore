@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const PessoaSchema = new mongoose.Schema({
     name: String,
     sex: String,
+    empresa: String,
     age: {
         type: Number,
         default: 0,

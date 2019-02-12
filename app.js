@@ -1,7 +1,11 @@
 const Hapi = require('hapi');
 
+//BD
 const MongoDb = require('./src/db/mongodb/mongoConnect')
 const PessoaSchema = require('./src/db/mongodb/schema/pessoaSchema')
+
+//Rotas
+const PessoaRoute = require('./src/routes/pessoaRoute');
 
 //Create server
 const app = new Hapi.Server(
@@ -18,23 +22,31 @@ const app = new Hapi.Server(
     }
 );
 
+function mapRoutes(instance, methods) {    
+    return methods.map(method => instance[method]())//Pegar todos os metodos da rota
+}
 
 async function startServer() {
     //Abir o Servidor
     try {
         await app.start();
         console.log('Servidor rodando na porta', app.info.port);
+       
+        const connection = MongoDb.connect();
+        const MongoConect = new MongoDb(connection, PessoaSchema)
     
+        app.route([        
+            ...mapRoutes(new PessoaRoute(MongoConect), PessoaRoute.methods()),//Retorna rotas de heroRoutes             
+        ]);
+    
+
         return app;
     } catch (error) {
         throw console.log('Error ao iniciar o server',error)
     }
 
-    //Conectar ao MONGODB
-    const connection = MongoDb.connect();
-    const MongoConect = new MongoDb(connection, PessoaSchema)
-    
-    
+    //Conectar ao MONGODB  
+        
 };
 
-module.exports = startServer();
+module.exports = startServer()
