@@ -41,6 +41,9 @@ class MongoDB{
         };
 
         //Create
+        create(item) {
+            return this._schema.create(item);    
+          };
 };
 
 module.exports = MongoDB;
