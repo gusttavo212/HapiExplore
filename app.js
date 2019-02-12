@@ -1,5 +1,8 @@
 const Hapi = require('hapi');
 
+const bissle = require('bissle');
+const akaya = require('akaya');
+
 //BD
 const MongoDb = require('./src/db/mongodb/mongoConnect')
 const PessoaSchema = require('./src/db/mongodb/schema/pessoaSchema')
@@ -38,6 +41,12 @@ async function startServer() {
         /*app.route([        
             ...mapRoutes(new PessoaRoute(MongoConect), PessoaRoute.methods()),//Retorna rotas de heroRoutes             
         ]);*/
+
+        app.register([
+            akaya,
+            bissle
+        ])
+           
     
 
         return app;

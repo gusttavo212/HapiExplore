@@ -44,12 +44,14 @@ describe('Suite de testes Servidor', function () {
     });
     it('Listar/READ', async ()=> {
         const [{name, sex, empresa, age}] = await MongoConect.read({ name: MOCK_PESSOA_DEFAULT.name})
+        const json = await MongoConect.read()
         const result = {
             name,
             sex,
             empresa,
             age
-        }
+        };
+        console.log(json)
         assert.deepEqual(result, MOCK_PESSOA_DEFAULT);
     })
 })

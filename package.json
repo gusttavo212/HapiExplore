@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/gusttavo212/HapiExplore#readme",
   "dependencies": {
+    "akaya": "^4.0.1",
     "assert": "^1.4.1",
+    "bissle": "^3.0.1",
     "boom": "^7.3.0",
     "hapi": "^18.1.0",
     "joi": "^14.3.1",
