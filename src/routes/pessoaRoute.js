@@ -13,7 +13,7 @@ class PessoaRoute extends BaseRoute {
     };
     
     create() {
-        return {
+       /* return {
             path: '/pessoa',
             method: 'POST',
             config: {
@@ -42,7 +42,7 @@ class PessoaRoute extends BaseRoute {
                 } catch (error) {
                 }
             }
-        }
+        }*/
     }
 }
 

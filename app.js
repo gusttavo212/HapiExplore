@@ -35,9 +35,9 @@ async function startServer() {
         const connection = MongoDb.connect();
         const MongoConect = new MongoDb(connection, PessoaSchema)
     
-        app.route([        
+        /*app.route([        
             ...mapRoutes(new PessoaRoute(MongoConect), PessoaRoute.methods()),//Retorna rotas de heroRoutes             
-        ]);
+        ]);*/
     
 
         return app;

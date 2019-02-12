@@ -3,7 +3,7 @@ const app = require('../../app');
 
 const MongoDb = require('../db/mongodb/mongoConnect')
 const PessoaSchema = require('../db/mongodb/schema/pessoaSchema')
-const Context = require('../db/base/ContextStrategy');
+
 
 let MongoConect = {};//recebe a connection mongodb
 let api = {};//Recebe o server
